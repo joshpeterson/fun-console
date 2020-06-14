@@ -15,7 +15,7 @@ TEST_CASE("Console")
 
   SECTION("Format replaces emojis")
   {
-    REQUIRE(console.Format("Baby :shark:") == "Baby \U0001F988\n");
+    REQUIRE(console.Format("Baby :shark:") == u8"Baby \U0001F988\n");
   }
 
   SECTION("AddNewLine adds a newline to the end of the message")
@@ -31,12 +31,12 @@ TEST_CASE("Console")
   SECTION("ReplaceEmoji replaces the :shark:")
   {
     REQUIRE(console.ReplaceEmoji("Baby :shark:, do do") ==
-            "Baby \U0001F988, do do");
+            u8"Baby \U0001F988, do do");
   }
 
   SECTION("ReplaceEmoji replaces the more than one emoji string")
   {
     REQUIRE(console.ReplaceEmoji("Baby :shark: :shark: :shark:") ==
-            "Baby \U0001F988 \U0001F988 \U0001F988");
+            u8"Baby \U0001F988 \U0001F988 \U0001F988");
   }
 }

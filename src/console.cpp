@@ -35,7 +35,7 @@ std::string Console::ReplaceEmoji(const std::string& message)
   std::string result = message;
   while (found(location))
   {
-    result.replace(location, shark.length(), "\U0001F988");
+    result.replace(location, shark.length(), u8"\U0001F988");
     location = result.find(shark);
   }
   return result;
