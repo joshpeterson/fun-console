@@ -25,7 +25,10 @@ Checks: >
   -modernize-avoid-c-arrays,
   -llvm-qualified-auto,
   -readability-qualified-auto,
-  -cppcoreguidelines-pro-bounds-pointer-arithmetic
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -cppcoreguidelines-pro-type-vararg,
+  -hicpp-vararg,
+  -readability-convert-member-functions-to-static,
 WarningsAsErrors: '*'
 HeaderFilterRegex: 'src/.*'
 AnalyzeTemporaryDtors: false
