@@ -3,3 +3,5 @@ artifacts/
 *.swo
 tags
 compile_commands.json
+.vs/
+out/
