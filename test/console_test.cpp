@@ -1,12 +1,18 @@
 #include "catch.hpp"
 
 #include "console.h"
+#include "platform.h"
 
 using namespace easy;
 
 TEST_CASE("Console")
 {
-  Console console;
+  class PlatformWithEmoji : public Platform
+  {
+  public:
+    bool SupportsEmoji() const override { return true; }
+  };
+  Console console(new PlatformWithEmoji());
 
   SECTION("Format adds a newline to the end of the message")
   {
@@ -23,5 +29,23 @@ TEST_CASE("Console")
   SECTION("AddNewLine adds a newline to the end of the message")
   {
     REQUIRE(console.AddNewLine("It was the best") == "It was the best\n");
+  }
+}
+
+TEST_CASE("Console without emoji support")
+{
+  class PlatformWithoutEmoji : public Platform
+  {
+  public:
+    bool SupportsEmoji() const override { return false; }
+  };
+
+  Console console(new PlatformWithoutEmoji());
+
+  SECTION("Format does not replace emojis")
+  {
+    REQUIRE(
+        console.Format(":musical note: Baby :shark:, do do :musical note:") ==
+        ":musical note: Baby :shark:, do do :musical note:\n");
   }
 }
