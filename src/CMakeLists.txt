@@ -3,6 +3,12 @@ set(SOURCES
   "console.h"
   "emoji.cpp"
   "emoji.h"
+  "platform.h"
+  "platform.cpp"
+  "platform-factory.h"
+  "platform-factory.cpp"
+  "platform-windows.h"
+  "platform-windows.cpp"
 )
 
 find_package(Sanitizers)
