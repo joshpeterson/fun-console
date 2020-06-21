@@ -2,7 +2,7 @@
 
 #include "platform.h"
 
-namespace easy
+namespace fun
 {
 class PlatformWindows : public Platform
 {
@@ -10,4 +10,4 @@ public:
   PlatformWindows();
   bool SupportsEmoji() const override;
 };
-} // namespace easy
+} // namespace fun

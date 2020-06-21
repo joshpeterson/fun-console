@@ -4,7 +4,7 @@
 #define TARGET_WINDOWS 1
 #endif
 
-namespace easy
+namespace fun
 {
 
 class Platform
@@ -21,4 +21,4 @@ public:
   virtual bool SupportsEmoji() const;
 };
 
-} // namespace easy
+} // namespace fun

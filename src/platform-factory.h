@@ -2,11 +2,11 @@
 
 #include "platform.h"
 
-namespace easy
+namespace fun
 {
 class PlatformFactory
 {
 public:
   static const Platform* Current();
 };
-} // namespace easy
+} // namespace fun

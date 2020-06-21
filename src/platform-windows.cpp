@@ -8,7 +8,7 @@
 
 #include <cstdio>
 
-namespace easy
+namespace fun
 {
 
 static bool supportsEmoji = false;
@@ -42,6 +42,6 @@ PlatformWindows::PlatformWindows()
 
 bool PlatformWindows::SupportsEmoji() const { return supportsEmoji; }
 
-} // namespace easy
+} // namespace fun
 
 #endif // TARGET_WINDOWS

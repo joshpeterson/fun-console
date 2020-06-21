@@ -2,7 +2,7 @@
 
 #include <unordered_map>
 
-namespace easy
+namespace fun
 {
 
 static std::unordered_map<std::string, std::string> emojis = {
@@ -69,4 +69,4 @@ std::string Emoji::Replace(const std::string& message)
   return result;
 }
 
-} // namespace easy
+} // namespace fun

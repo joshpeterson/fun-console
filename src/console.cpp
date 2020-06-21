@@ -5,7 +5,7 @@
 #include <cstdio>
 #include <unordered_map>
 
-namespace easy
+namespace fun
 {
 
 void console(const char* message)
@@ -31,4 +31,4 @@ std::string Console::AddNewLine(const std::string& message)
   return message + "\n";
 }
 
-} // namespace easy
+} // namespace fun

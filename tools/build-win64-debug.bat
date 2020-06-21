@@ -10,7 +10,7 @@ cd win64
 
 cmake ..\.. -G "Visual Studio 15 2017 Win64" || exit /b 1
 
-msbuild /nologo /verbosity:quiet /p:Configuration=Debug easy-console.sln || exit /b 1
+msbuild /nologo /verbosity:quiet /p:Configuration=Debug fun-console.sln || exit /b 1
 
 test\Debug\tests.exe || exit /b 1
 
