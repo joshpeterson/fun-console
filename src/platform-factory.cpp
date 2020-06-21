@@ -2,7 +2,7 @@
 
 #include "platform-windows.h"
 
-namespace easy
+namespace fun
 {
 const Platform* PlatformFactory::Current()
 {
@@ -12,4 +12,4 @@ const Platform* PlatformFactory::Current()
   return new Platform();
 #endif
 }
-} // namespace easy
+} // namespace fun

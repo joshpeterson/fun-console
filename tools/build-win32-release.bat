@@ -10,7 +10,7 @@ cd win32
 
 cmake ..\.. -G "Visual Studio 15 2017" || exit /b 1
 
-msbuild /nologo /verbosity:quiet /p:Configuration=Release easy-console.sln || exit /b 1
+msbuild /nologo /verbosity:quiet /p:Configuration=Release fun-console.sln || exit /b 1
 
 test\Release\tests.exe || exit /b 1
 

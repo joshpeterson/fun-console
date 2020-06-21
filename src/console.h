@@ -5,7 +5,7 @@
 #include <memory>
 #include <string>
 
-namespace easy
+namespace fun
 {
 
 void console(const char* message);
@@ -22,4 +22,4 @@ private:
   std::unique_ptr<const Platform> platform_;
 };
 
-} // namespace easy
+} // namespace fun

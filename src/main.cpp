@@ -2,9 +2,9 @@
 
 void kitchen_sink()
 {
-  easy::console("A new line is printed by default");
-  easy::console("Emojis are supported: :musical note: Baby :shark:, do do "
-                ":musical note:");
+  fun::console("A new line is printed by default");
+  fun::console("Emojis are supported: :musical note: Baby :shark:, do do "
+               ":musical note:");
 }
 
 int main()

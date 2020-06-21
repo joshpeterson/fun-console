@@ -3,7 +3,7 @@
 #include "console.h"
 #include "platform.h"
 
-using namespace easy;
+using namespace fun;
 
 TEST_CASE("Console")
 {

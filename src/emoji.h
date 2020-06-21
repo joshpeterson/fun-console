@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace easy
+namespace fun
 {
 
 class Emoji
@@ -11,4 +11,4 @@ public:
   static std::string Replace(std::string const& message);
 };
 
-} // namespace easy
+} // namespace fun

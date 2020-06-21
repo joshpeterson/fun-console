@@ -2,7 +2,7 @@
 
 #include "emoji.h"
 
-using namespace easy;
+using namespace fun;
 
 TEST_CASE("Emoji")
 {

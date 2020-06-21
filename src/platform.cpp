@@ -1,8 +1,8 @@
 #include "platform.h"
 
-namespace easy
+namespace fun
 {
 
 bool Platform::SupportsEmoji() const { return true; }
 
-} // namespace easy
+} // namespace fun
