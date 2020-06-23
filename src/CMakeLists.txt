@@ -3,6 +3,7 @@ set(SOURCES
   "console.h"
   "emoji.cpp"
   "emoji.h"
+  "emoji_data.h"
   "platform.h"
   "platform.cpp"
   "platform-factory.h"
