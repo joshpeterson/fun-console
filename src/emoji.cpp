@@ -1,14 +1,10 @@
 #include "emoji.h"
+#include "emoji-data.h"
 
 #include <unordered_map>
 
 namespace fun
 {
-
-static std::unordered_map<std::string, std::string> emojis = {
-    {"shark", u8"\U0001F988"},
-    {"musical note", u8"\U0001F3B5"},
-};
 
 static bool found(std::unordered_map<std::string, std::string>::iterator emoji)
 {
