@@ -1,5 +1,6 @@
 #include "console.h"
 #include "emoji.h"
+#include "markdown.h"
 #include "platform-factory.h"
 
 #include <cstdio>
@@ -23,7 +24,11 @@ std::string Console::Format(const std::string& message)
   auto afterEmoji = message;
   if (platform_->SupportsEmoji())
     afterEmoji = Emoji::Replace(message);
-  return AddNewLine(afterEmoji);
+
+  auto afterControlCharacters = afterEmoji;
+  if (platform_->SupportsControlCharacters())
+    afterControlCharacters = Markdown::Replace(afterEmoji);
+  return AddNewLine(afterControlCharacters);
 }
 
 std::string Console::AddNewLine(const std::string& message)

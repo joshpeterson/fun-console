@@ -1,6 +1,7 @@
 set(SOURCES
   "console-test.cpp"
   "emoji-test.cpp"
+  "markdown-test.cpp"
 )
 
 find_package(Sanitizers)

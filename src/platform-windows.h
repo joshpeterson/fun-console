@@ -9,5 +9,6 @@ class PlatformWindows : public Platform
 public:
   PlatformWindows();
   bool SupportsEmoji() const override;
+  bool SupportsControlCharacters() const override;
 };
 } // namespace fun

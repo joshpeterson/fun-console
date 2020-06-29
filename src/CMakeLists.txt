@@ -5,6 +5,8 @@ set(SOURCES
   "emoji.h"
   "emoji-data.cpp"
   "emoji-data.h"
+  "markdown.cpp"
+  "markdown.h"
   "platform.h"
   "platform.cpp"
   "platform-factory.h"

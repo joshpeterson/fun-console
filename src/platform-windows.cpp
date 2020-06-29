@@ -12,6 +12,7 @@ namespace fun
 {
 
 static bool supportsEmoji = false;
+static bool supportsControlCharacters = false;
 
 static bool HasEnvironmentVariable(const char* variable)
 {
@@ -37,10 +38,41 @@ PlatformWindows::PlatformWindows()
     supportsEmoji = false;
 
   if (IsWindowsTerminal() || IsConEmu())
+  {
     supportsEmoji = true;
+    supportsControlCharacters = true;
+  }
+
+  HANDLE outputHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+  if (outputHandle == INVALID_HANDLE_VALUE)
+  {
+    supportsEmoji = false;
+    supportsControlCharacters = false;
+    return;
+  }
+
+  DWORD dwMode = 0;
+  if (!GetConsoleMode(outputHandle, &dwMode))
+  {
+    supportsEmoji = false;
+    supportsControlCharacters = false;
+    return;
+  }
+
+  dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+  if (!SetConsoleMode(outputHandle, dwMode))
+  {
+    supportsControlCharacters = false;
+    return;
+  }
 }
 
 bool PlatformWindows::SupportsEmoji() const { return supportsEmoji; }
+
+bool PlatformWindows::SupportsControlCharacters() const
+{
+  return supportsControlCharacters;
+}
 
 } // namespace fun
 
