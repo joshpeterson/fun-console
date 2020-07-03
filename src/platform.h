@@ -19,6 +19,7 @@ public:
   virtual ~Platform() = default;
 
   virtual bool SupportsEmoji() const;
+  virtual bool SupportsControlCharacters() const;
 };
 
 } // namespace fun
