@@ -11,6 +11,8 @@ set(SOURCES
   "platform.cpp"
   "platform-factory.h"
   "platform-factory.cpp"
+  "platform-posix.h"
+  "platform-posix.cpp"
   "platform-windows.h"
   "platform-windows.cpp"
 )
