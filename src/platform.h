@@ -2,6 +2,8 @@
 
 #if defined(_WIN32) || defined(WIN32)
 #define TARGET_WINDOWS 1
+#else
+#define TARGET_POSIX 1
 #endif
 
 namespace fun
