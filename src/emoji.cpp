@@ -11,13 +11,13 @@ static bool found(std::unordered_map<std::string, std::string>::iterator emoji)
   return emoji != emojis.end();
 }
 
-static bool try_get_emoji(const std::string& emoji, std::string& unicode_value)
+static bool tryGetEmoji(const std::string& emoji, std::string& unicodeValue)
 {
-  auto possible_emoji = emojis.find(emoji);
-  if (!found(possible_emoji))
+  auto possibleEmoji = emojis.find(emoji);
+  if (!found(possibleEmoji))
     return false;
 
-  unicode_value = possible_emoji->second;
+  unicodeValue = possibleEmoji->second;
   return true;
 }
 
@@ -28,38 +28,38 @@ static bool found(std::string::size_type location)
 
 std::string Emoji::Replace(const std::string& message)
 {
-  auto emoji_start = message.find_first_of(':');
-  if (!found(emoji_start))
+  auto emojiStart = message.find_first_of(':');
+  if (!found(emojiStart))
     return message;
 
-  auto emoji_end = message.find_first_of(':', emoji_start + 1);
-  if (!found(emoji_end))
+  auto emojiEnd = message.find_first_of(':', emojiStart + 1);
+  if (!found(emojiEnd))
     return message;
 
   std::string result = message;
-  while (found(emoji_end))
+  while (found(emojiEnd))
   {
     // Extract the emoji from the larger string
-    auto emoji = result.substr(emoji_start + 1, emoji_end - emoji_start - 1);
+    auto emoji = result.substr(emojiStart + 1, emojiEnd - emojiStart - 1);
 
-    std::string unicode_value;
-    if (try_get_emoji(emoji, unicode_value))
+    std::string unicodeValue;
+    if (tryGetEmoji(emoji, unicodeValue))
     {
       // Replace the emoji plus the leading the trailing colons
-      result.replace(emoji_start, emoji.length() + 2, unicode_value);
+      result.replace(emojiStart, emoji.length() + 2, unicodeValue);
 
       // Look for the next emoji
-      emoji_start = result.find_first_of(':');
+      emojiStart = result.find_first_of(':');
     }
     else
     {
       // This was not an emoji, so start looking for the next one after it
-      emoji_start = result.find_first_of(':', emoji_start + 1);
+      emojiStart = result.find_first_of(':', emojiStart + 1);
     }
 
-    if (!found(emoji_start))
+    if (!found(emojiStart))
       return result;
-    emoji_end = result.find_first_of(':', emoji_start + 1);
+    emojiEnd = result.find_first_of(':', emojiStart + 1);
   }
 
   return result;
