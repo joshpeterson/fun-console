@@ -1,4 +1,6 @@
 set(SOURCES
+  "colors.cpp"
+  "colors.h"
   "console.cpp"
   "console.h"
   "emoji.cpp"
