@@ -1,4 +1,5 @@
 set(SOURCES
+  "colors-test.cpp"
   "console-test.cpp"
   "emoji-test.cpp"
   "markdown-test.cpp"

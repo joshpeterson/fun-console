@@ -29,7 +29,8 @@ Checks: >
   -cppcoreguidelines-pro-type-vararg,
   -hicpp-vararg,
   -readability-convert-member-functions-to-static,
-  -cppcoreguidelines-macro-usage
+  -cppcoreguidelines-macro-usage,
+  -google-readability-braces-around-statements
 WarningsAsErrors: '*'
 HeaderFilterRegex: 'src/.*'
 AnalyzeTemporaryDtors: false

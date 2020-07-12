@@ -1,4 +1,5 @@
 #include "console.h"
+#include "colors.h"
 #include "emoji.h"
 #include "markdown.h"
 #include "platform-factory.h"
@@ -21,14 +22,16 @@ Console::Console(const Platform* platform) : platform_(platform) {}
 
 std::string Console::Format(const std::string& message)
 {
-  auto afterEmoji = message;
+  auto result = message;
   if (platform_->SupportsEmoji())
-    afterEmoji = Emoji::Replace(message);
+    result = Emoji::Replace(result);
 
-  auto afterControlCharacters = afterEmoji;
   if (platform_->SupportsControlCharacters())
-    afterControlCharacters = Markdown::Replace(afterEmoji);
-  return AddNewLine(afterControlCharacters);
+  {
+    result = Markdown::Replace(result);
+    result = Colors::Replace(result);
+  }
+  return AddNewLine(result);
 }
 
 std::string Console::AddNewLine(const std::string& message)
