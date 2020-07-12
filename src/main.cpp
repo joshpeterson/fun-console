@@ -1,6 +1,6 @@
 #include "console.h"
 
-void kitchen_sink()
+void kitchenSink()
 {
   fun::console("A new line is printed by default.");
   fun::console("Emojis are supported: :musical note: Baby :shark:, do do "
@@ -13,6 +13,6 @@ void kitchen_sink()
 
 int main()
 {
-  kitchen_sink();
+  kitchenSink();
   return 0;
 }

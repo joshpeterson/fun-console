@@ -26,64 +26,63 @@ static bool found(std::unordered_map<std::string, std::string>::iterator color)
   return color != colors.end();
 }
 
-static bool try_get_formatting_code(const std::string& color,
-                                    std::string& formatting_code)
+static bool tryGetFormattingCode(const std::string& color,
+                                 std::string& formattingCode)
 {
   auto possibleColor = colors.find(color);
   if (!found(possibleColor))
     return false;
 
-  formatting_code = possibleColor->second;
+  formattingCode = possibleColor->second;
   return true;
 }
 
-static std::string::size_type try_find_end_of_color(std::string const& result,
-                                                    size_t i,
-                                                    const std::string& color)
+static std::string::size_type
+tryFindEndOfColor(std::string const& result, size_t i, const std::string& color)
 {
-  std::string end_of_color_marker = "[/";
-  end_of_color_marker += color;
-  end_of_color_marker += "]";
-  auto end_of_color = result.find(end_of_color_marker, i);
-  return end_of_color;
+  std::string endOfColorMarker = "[/";
+  endOfColorMarker += color;
+  endOfColorMarker += "]";
+  auto endOfColor = result.find(endOfColorMarker, i);
+  return endOfColor;
 }
 
 std::string Colors::Replace(std::string const& message)
 {
   std::string result = message;
-  auto marker_start = std::string::npos;
-  auto marker_end = std::string::npos;
+  auto markerStart = std::string::npos;
+  auto markerEnd = std::string::npos;
   std::string color;
 
   for (size_t i = 0; i < result.length(); ++i)
   {
     if (result[i] == '[')
     {
-      marker_start = i;
+      markerStart = i;
     }
-    else if (found(marker_start))
+    else if (found(markerStart))
     {
       if (result[i] == ']')
-        marker_end = i;
+        markerEnd = i;
       else
         color += result[i];
     }
 
-    if (found(marker_start) && found(marker_end))
+    if (found(markerStart) && found(markerEnd))
     {
-      std::string formatting_code;
-      if (try_get_formatting_code(color, formatting_code))
+      std::string formattingCode;
+      if (tryGetFormattingCode(color, formattingCode))
       {
-        auto end_of_color = try_find_end_of_color(result, i, color);
-        if (found(end_of_color))
+        auto endOfColor = tryFindEndOfColor(result, i, color);
+        if (found(endOfColor))
         {
-          result.replace(marker_start, marker_end - marker_start + 1,
-                         formatting_code);
-          end_of_color += formatting_code.length() - color.length() - 2;
-          result.replace(end_of_color, color.length() + 3, "\033[0m");
-          i = end_of_color + 3;
-          marker_start = std::string::npos;
-          marker_end = std::string::npos;
+          result.replace(markerStart, markerEnd - markerStart + 1,
+                         formattingCode);
+          endOfColor += formattingCode.length() - color.length() - 2;
+          result.replace(endOfColor, color.length() + 3, "\033[0m");
+          i = endOfColor + 3;
+          markerStart = std::string::npos;
+          markerEnd = std::string::npos;
           color = "";
         }
       }
