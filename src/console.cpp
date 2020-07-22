@@ -16,6 +16,8 @@ void console(const char* message)
   printf("%s", console.Format(message).c_str());
 }
 
+void console(const std::string& message) { console(message.c_str()); }
+
 Console::Console() : Console(PlatformFactory::Current()) {}
 
 Console::Console(const Platform* platform) : platform_(platform) {}

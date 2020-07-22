@@ -9,6 +9,7 @@ namespace fun
 {
 
 void console(const char* message);
+void console(const std::string& message);
 
 class Console
 {
